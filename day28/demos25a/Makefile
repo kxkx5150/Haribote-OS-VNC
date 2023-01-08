@@ -207,11 +207,11 @@ img:
 .PHONY: run
 run:
 	$(MAKE) img
-	qemu-system-i386 -vnc :0 -drive file=${OSIMAGE},format=raw,if=floppy
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${OSIMAGE},format=raw,if=floppy
 .PHONY: debug
 debug:
 	make img
-	qemu-system-i386 -vnc :0 -drive file=${OSIMAGE},format=raw,if=floppy -gdb tcp::10000 -S
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${OSIMAGE},format=raw,if=floppy -gdb tcp::10000 -S
 .PHONY: srcimg
 srcimg:
 	$(RM) *.bin
@@ -241,4 +241,4 @@ docker-make:
 .PHONY: docker-run
 docker-run:
 	make docker-make
-	qemu-system-i386 -vnc :0 -m 32m -enable-kvm -drive file=${OSIMAGE},format=raw,if=floppy
+	qemu-system-i386 -vnc :0 --usbdevice tablet -m 32m -enable-kvm -drive file=${OSIMAGE},format=raw,if=floppy

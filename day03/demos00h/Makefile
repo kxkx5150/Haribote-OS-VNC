@@ -25,7 +25,7 @@ img:
 	$(MAKE) image_file
 run:
 	$(MAKE) img
-	qemu-system-i386 -vnc :0 -drive file=${image_file},format=raw,if=floppy
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${image_file},format=raw,if=floppy
 clean:
 	$(RM) *.bin
 	$(RM) *.sys

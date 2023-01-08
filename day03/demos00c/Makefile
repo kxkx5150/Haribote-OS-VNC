@@ -22,7 +22,7 @@ img:
 	$(MAKE) demos.img
 run:
 	$(MAKE) img
-	qemu-system-i386 -vnc :0 -fda demos.img
+	qemu-system-i386 -vnc :0 --usbdevice tablet -fda demos.img
 clean:
 	$(RM) *.bin
 	$(RM) *.lst

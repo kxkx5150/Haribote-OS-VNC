@@ -7,7 +7,7 @@ https://github.com/nhayato/30OS
 <br><br><br>
 
 devcontainer 環境 での clone 用のリポジトリ  
-qemu に -vnc :0 を付加
+qemu に -vnc :0 --usbdevice tablet を付加
 
 <br><br><br>
 <br><br><br>

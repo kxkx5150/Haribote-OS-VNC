@@ -34,10 +34,10 @@ img:
 	$(MAKE) image_file
 run:
 	$(MAKE) img
-	qemu-system-i386 -vnc :0 -drive file=${image_file},format=raw,if=floppy
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${image_file},format=raw,if=floppy
 debug:
 	make img
-	qemu-system-i386 -vnc :0 -drive file=${image_file},format=raw,if=floppy -gdb tcp::10000 -S
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${image_file},format=raw,if=floppy -gdb tcp::10000 -S
 clean:
 	$(RM) *.bin
 	$(RM) *.sys

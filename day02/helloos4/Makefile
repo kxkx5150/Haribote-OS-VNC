@@ -16,4 +16,4 @@ img:
 	make -r helloos.img
 run:
 	make img
-	qemu-system-i386 -vnc :0 helloos.img
+	qemu-system-i386 -vnc :0 --usbdevice tablet helloos.img

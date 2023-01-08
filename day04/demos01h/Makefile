@@ -40,11 +40,11 @@ img:
 .PHONY: run
 run:
 	$(MAKE) img
-	qemu-system-i386 -vnc :0 -drive file=${OSIMAGE},format=raw,if=floppy
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${OSIMAGE},format=raw,if=floppy
 .PHONY: debug
 debug:
 	make img
-	qemu-system-i386 -vnc :0 -drive file=${OSIMAGE},format=raw,if=floppy -gdb tcp::10000 -S
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${OSIMAGE},format=raw,if=floppy -gdb tcp::10000 -S
 .PHONY: clean
 clean:
 	$(RM) *.bin
@@ -70,4 +70,4 @@ docker-make:
 docker-run:
 	make docker-build
 	make docker-make
-	qemu-system-i386 -vnc :0 -drive file=${OSIMAGE},format=raw,if=floppy
+	qemu-system-i386 -vnc :0 --usbdevice tablet -drive file=${OSIMAGE},format=raw,if=floppy
